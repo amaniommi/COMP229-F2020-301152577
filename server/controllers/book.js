@@ -47,7 +47,9 @@ module.exports.processAddPage = (req, res, next) => {
     });
 
 }
-
+/*
+Add your code here to display EDIT
+*/
 module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
 
@@ -60,11 +62,14 @@ module.exports.displayEditPage = (req, res, next) => {
         else
         {
             //show the edit view
-            res.render('book/edit', {title: 'Edit Book', book: bookToEdit})
+            res.render('book/edit', {title: 'Edit Book', book: bookToEdit, 
+            displayName: req.user ? req.user.displayName : ''})
         }
     });
 }
-
+/*
+Add your code here to process EDIT
+*/
 module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id
 
@@ -91,6 +96,12 @@ module.exports.processEditPage = (req, res, next) => {
     });
 }
 
+
+
+/*
+Add your code here to perform DELETE operation
+*/
+
 module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
 
@@ -103,7 +114,7 @@ module.exports.performDelete = (req, res, next) => {
         else
         {
              // refresh the book list
-             res.redirect('/book-list');
+            res.redirect('/book-list');
         }
     });
 }
